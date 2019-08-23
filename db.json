@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Dima",
+      "email": "first",
+      "password": "1111",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "name": "Vlad",
+      "email": "secouns",
+      "password": "1111",
+      "role": "admin"
+    },
+    {
+      "id": 3,
+      "name": "Egor",
+      "email": "third",
+      "password": "1111"
+    },
+    {
+      "id": 4,
+      "name": "Artem",
+      "email": "fourth",
+      "password": "1111"
+    }
+  ]
+}
