@@ -1,35 +1,34 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
 import Button from '@material-ui/core/Button';
-import { HeaderState,  HeaderRequest } from "../../redux/header/types";
+import {LogoutState,  LogoutRequest } from "../../redux/logout/types";
 
 
 export interface HeaderProps {
-  doLogin: (data:any) => object;
+  doLogout: (data:any) => object;
   isLog: boolean,
   data: any,
 }
 
 const  HeaderComponent: React.FC = (props:any) => {
-  const state: HeaderState = {
-    isLog: false,
-    data: {
-      role: "",
-    },
-  };
+  // const state: LogoutState = {
+  //   isLog: false,
+  //   data: {
+  //     role: "",
+  //   },
+  // };
 
-  const { doLogin } = props;
+  const { doLogout } = props;
 
   function logout()  {
     localStorage.clear();
-       doLogin({isLog: false});  
-       console.log(props.isLyog);
+    window.location.href = "/";
+      //  doLogout({isLog: false});  
         
     }
     
     
-    console.log(state.isLog);
-  
+ 
     console.log("--",props.data);
     console.log("-",props.isLog);
     
@@ -53,7 +52,7 @@ const  HeaderComponent: React.FC = (props:any) => {
               </header>
           ) :  console.log("dffdg")
         }
-        {!props.isLog ?
+        {(!props.isLog)  ?
           (
             <header className="headerComponent-header">
               <Link className="headerComponent-link" to="/login">Login</Link>

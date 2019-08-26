@@ -60,3 +60,18 @@ export function* doLogin(): IterableIterator<any> {
   }
 });
 }
+
+// worker sagas
+// export function* doLogout(): IterableIterator<any> {
+
+//         yield put({
+//         type: `@@logout/DO_LOGOUT`,
+//           payload: {
+//           data: {
+//             isLog: "false",
+//           }
+      
+  
+//         }
+//        });
+// }

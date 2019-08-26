@@ -2,7 +2,7 @@ import React from "react";
 import { HomeState } from "../../redux/home/types";
 import { Product } from "../../types/product";
 //import { doInit } from "@redux/home/actions";
-import HeaderContainer from "/Users/Anuitex-81/Desktop/new-app/src/сontainers/headerContainer"
+import HeaderContainer from "../../сontainers/headerContainer"
 import { error } from "../../redux/common/reducer";
 import { Error } from "../common/errorComponent"
 import { RootState } from "../../redux/rootReducer";
