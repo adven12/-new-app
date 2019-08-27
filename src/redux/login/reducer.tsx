@@ -21,9 +21,9 @@ export function loginReducer(state: LoginState = initialState, action: any) {
     case `@@login/LOGIN_FAILED`: {
       const { data } = action.payload;
       return {
-        ...state,
+        ...state, 
         message:'',
-      };
+           };
     }
 
     case `@@login/LOGIN_SUCCESS`: {
@@ -32,7 +32,7 @@ export function loginReducer(state: LoginState = initialState, action: any) {
         ...state,
         data,
         error: '',
-        isLog: true,
+        isLog: !state.isLog,
         test: 'test',
       };
     }

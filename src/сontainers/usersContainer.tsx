@@ -1,15 +1,15 @@
 import { RootState } from "../redux/rootReducer";
-import  HeaderComponent  from "../сomponents/header/headerComponent";
+import { UsersComponent } from "../сomponents/users/usersComponent";
 import { connect } from "react-redux";
-import { doLogin } from "../redux/login/actions";
+import { doUsers } from "../redux/users/actions";
 
 const mapStateToProps = (state: RootState) => ({
+  error: state.error,
   isLog: state.login.isLog,
-  data: state.login.data,
-  
+  dataUsers: state.users.dataUsers,
 });
 
 export default connect(
   mapStateToProps,
-  { doLogin }
-)(HeaderComponent);
+  { doUsers }
+)(UsersComponent);

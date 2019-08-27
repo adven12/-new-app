@@ -10,13 +10,6 @@ export function logoutReducer(state: LogoutState = initialState, action: any) {
     // debugger;
   switch (action.type) {
     case `@@logout/DO_LOGOUT`: {
-        debugger;
-    //   return {
-    //     ...state,
-    //     data:{
-    //         isLog: false,
-    //     }
-    //   };
       const { data } = action.payload;
       return {
         ...state,

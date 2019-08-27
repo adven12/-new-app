@@ -3,9 +3,8 @@ import { Link, Redirect } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import {LogoutState,  LogoutRequest } from "../../redux/logout/types";
 
-
 export interface HeaderProps {
-  doLogout: (data:any) => object;
+  doLogin: () => object;
   isLog: boolean,
   data: any,
 }
@@ -18,27 +17,22 @@ const  HeaderComponent: React.FC = (props:any) => {
   //   },
   // };
 
-  const { doLogout } = props;
-
+ 
   function logout()  {
+    // const { doLogin } = props;
     localStorage.clear();
     window.location.href = "/";
       //  doLogout({isLog: false});  
         
     }
     
-    
- 
-    console.log("--",props.data);
-    console.log("-",props.isLog);
-    
-     return (
+    return (
       <div className="headerComponent">
         {/* {!this.props.isLog ? :}  */}
         {props.isLog  && props.data.role === "admin" ?
           (
                  <header className="headerComponent-header">
-                   <Link className="headerComponent-link" to="/home">Users</Link>
+                   <Link className="headerComponent-link" to="/users">Users</Link>
                    <Link className="headerComponent-link" to="/home">Products</Link>
                    <Link onClick={() => logout()} className="headerComponent-link headerComponent-a" to="/">Logout</Link>
                  </header>
@@ -48,6 +42,7 @@ const  HeaderComponent: React.FC = (props:any) => {
           (
               <header className="headerComponent-header">
                 <Link className="headerComponent-link" to="/home">Home</Link>
+                <Link className="headerComponent-link" to="/home">Products</Link>
                 <Link onClick={() => logout()} className="headerComponent-link headerComponent-a" to="/">Logout</Link>
               </header>
           ) :  console.log("dffdg")

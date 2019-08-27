@@ -32,7 +32,7 @@ export class LoginComponent extends React.Component<LoginProps, LoginState> {
 
   render() {
     if (this.props.isLog) {
-      return <Redirect to="/home" />;
+      return <Redirect to="/users" />;
     }
     return (
         <div className="loginComponent">
