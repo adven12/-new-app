@@ -20,6 +20,7 @@
     font-size: 20px;
     color: black;  
     text-transform: uppercase;
+    padding-top: 8px;
 }
 .headerComponent-link:hover{
     color: coral;
@@ -33,6 +34,11 @@
     color: black;  
     text-transform: uppercase;
     cursor: pointer;
+}
+.headerComponent-img{
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;   
 }
 .loginComponent-input{
     width: 300px;
@@ -98,9 +104,9 @@
 .headerRegistration-button{
     margin-left: 50px;
 }
-.homeComponent-users{
+.homeComponent-user{
     border: 2px solid #000;
-    width: 200px; 
+    width: 400px; 
     text-align: left;
     border-radius: 5px;
     box-sizing: border-box;
@@ -113,6 +119,53 @@
 }
 .homeComponent-users-data{
     padding-left: 5px;
+}
+.homeLogic{
+    margin: auto;
+    display: inline-block;
+}
+.homeLogic-input{
+    width: 200px;
+	font-size: 13px;
+	padding: 6px 0 4px 10px;
+	border: 1px solid #cecece;
+	background: #F6F6f6;
+    border-radius: 8px;
+    text-decoration: none;
+    outline:none;
+    margin-bottom: 5px;
+}
+.homeLogic-input-upload{
+    width: 100px;
+	font-size: 13px;
+	padding: 6px 0 4px 10px;
+	border: 1px solid #cecece;
+	background: #F6F6f6;
+    border-radius: 8px;
+    text-decoration: none;
+    outline:none;
+    margin-bottom: 5px;
+}
+.homeLogic-button{
+    margin-top: 10px;
+    text-decoration: none;
+    outline: none;
+    color: coral;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    background-size: 200% auto;
+    margin-left: 20px;
+}
+.productsComponent-books{
+    display: inline-block;
+    margin: 15px;
+    margin-bottom: 40px;
+}
+.basketComponent{
+    align-content: center;
+    text-align: center;
 }
 
 

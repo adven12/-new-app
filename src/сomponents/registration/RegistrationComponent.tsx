@@ -1,6 +1,7 @@
 import React from "react";
-import {RegistrationState, RegistrationResult, RegistrationRequest } from "../../redux/registration/types";
+import {RegistrationState, RegistrationRequest } from "../../redux/registration/types";
 import { Redirect } from 'react-router-dom'
+import  {callApi}   from "../../redux/login/req";
 
 export interface RegistrationProps {
   doRegistration: (data: RegistrationRequest) => object;
@@ -16,6 +17,7 @@ export class RegistrationComponent extends React.Component<RegistrationProps, Re
     email: "",
     password: "",
     name: "",
+    avatar: "",
     isLog: false,
   };
   
@@ -26,17 +28,34 @@ export class RegistrationComponent extends React.Component<RegistrationProps, Re
     console.log(this.state);
     
     const { doRegistration } = this.props;
-    doRegistration({ email: this.state.email, password: this.state.password, name: this.state.name });
+    doRegistration({ email: this.state.email, password: this.state.password, name: this.state.name, avatar:this.state.avatar });
     
   };
 
   render() {
     console.log(this.props);
+    console.log(this.props.isLog);
+    
     if (this.props.isLog) {
       return <Redirect to="/login" />;
     }
     return (
       <div className="headerRegistration">
+        <div>
+          <button
+            onClick={(e:any) => {
+              let qqq:any = {}
+              console.log(callApi("GET", "users", {}, "http://localhost:3002")
+              .then((res:any) => console.log(qqq = {...res}))
+              .then((res:any)=> console.log(JSON.stringify(qqq)))
+              .then((res:any) => console.log({...res}))
+              .then())
+              
+            }}
+          >
+            q2qwerty
+          </button>
+        </div>
         <div className="headerRegistration-h3">
             <h3>New user registration</h3>
         </div>

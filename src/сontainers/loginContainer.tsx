@@ -7,6 +7,7 @@ const mapStateToProps = (state: RootState) => ({
   email: state.login.email,
   password: state.login.password,
   isLog: state.login.isLog,
+  data: state.login.data,
 });
  
 export default connect(

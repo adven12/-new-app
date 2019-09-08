@@ -9,6 +9,7 @@ export interface LoginProps {
   isLog: boolean
   email: string
   password: string
+  data: any
 }
 
 export class LoginComponent extends React.Component<LoginProps, LoginState> {
@@ -18,21 +19,27 @@ export class LoginComponent extends React.Component<LoginProps, LoginState> {
     isLog: false,
     error: '',
     data:[],
-    test:"",
   };
-  handle = (event: any) =>
-    this.setState({ [event.target.name]: event.target.value } as any);
+  handle = (event: any) =>{
+    this.setState({ [event.target.name]: event.target.value } as any);  
+  }  
+    
 
+  
   login = () => {
     const { doLogin } = this.props;
     console.log('this.state.email = ', this.state.email);
-    
     doLogin({ email: this.state.email, password: this.state.password });
   };
 
   render() {
-    if (this.props.isLog) {
+    console.log(this.props.data.role);
+    
+    if (this.props.data.role ===  "admin" ) {
       return <Redirect to="/users" />;
+    }
+    if (this.props.isLog ===  true) {
+      return <Redirect to="/home" />;
     }
     return (
         <div className="loginComponent">

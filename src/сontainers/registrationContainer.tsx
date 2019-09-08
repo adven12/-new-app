@@ -4,11 +4,7 @@ import { RegistrationComponent } from "../сomponents/registration/RegistrationC
 import { doRegistration } from "../redux/registration/actions";
 
 const mapStateToProps = (state: RootState) => ({
-  // email: state.registration.email,
-  // password: state.registration.password,
-  // token:  state.login.token,
-  // name: state.registration.name,
-  isLog: state.registration.isLog,
+isLog: state.registration.isLog,
 });
 
 export default connect(

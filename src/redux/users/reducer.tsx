@@ -14,6 +14,7 @@ export function usersReducer(state: UsersState = initialState, action: any) {
     }
     case `@@users/DATAUSERS_LOADED`: {
       const { dataUsers } = action.payload;
+           
       return {
         ...state,
         dataUsers

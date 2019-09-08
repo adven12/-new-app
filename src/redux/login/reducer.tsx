@@ -7,7 +7,6 @@ export const initialState: LoginState = {
   isLog: false,
   error:'',
   data: [],
-  test: '',
 };
 
 export function loginReducer(state: LoginState = initialState, action: any) {
@@ -19,11 +18,11 @@ export function loginReducer(state: LoginState = initialState, action: any) {
       };
     }
     case `@@login/LOGIN_FAILED`: {
-      const { data } = action.payload;
+      const { error } = action.payload;
       return {
         ...state, 
-        message:'',
-           };
+        error: error
+      };
     }
 
     case `@@login/LOGIN_SUCCESS`: {
@@ -33,10 +32,20 @@ export function loginReducer(state: LoginState = initialState, action: any) {
         data,
         error: '',
         isLog: !state.isLog,
-        test: 'test',
       };
     }
-
+    case `@@home/DO_HOME_MODAL`: {
+      return {
+        ...state,
+      };
+    }
+    case `@@home/DO_HOME_MODAL_SUCCESS`: {
+      const { data } = action.payload;
+      return {
+        ...state,
+        data,
+      };
+    }
     default:
       return state;
   }

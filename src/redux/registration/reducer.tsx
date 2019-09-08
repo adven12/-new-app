@@ -5,6 +5,7 @@ export const initialState: RegistrationState = {
   email: "",
   password: "",
   name: '',
+  avatar: "",
   isLog: false,
 };
 
@@ -16,11 +17,10 @@ export function registrationReducer(state: RegistrationState = initialState, act
       };
     }
     case `@@registration/REGISTRATION_FAILED`: {
-      const { data } = action.payload;
+      const { error } = action.payload;
       return {
         ...state,
-        data,
-        error: "error"
+        error: error
       };
     }
 
@@ -28,8 +28,7 @@ export function registrationReducer(state: RegistrationState = initialState, act
       const { data } = action.payload;
       return {
         ...state,
-        token: data,
-        isLog: true,
+       isLog: true
       };
     }
    

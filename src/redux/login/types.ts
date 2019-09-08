@@ -10,20 +10,14 @@ export enum LoginActions {
     isLog: boolean,
     error: string,
     data: any,
-    test: string,
   }
   
-  export interface DoLoginProps {
-    email: string;
-    password: string;
-  }
+  // export interface DoLoginProps {
+  //   email: string;
+  //   password: string;
+  // }
   export interface LoginRequest {
     email: string;
     password: string;
   }
-  export interface LogoutRequest{
-    isLog: boolean;
-  }
-  export interface LogoutState{
-    isLog: boolean;
-  }
+

@@ -1,5 +1,4 @@
 import { RootState } from "../rootReducer";
-import { string } from "prop-types";
 
 export const initialState = {
   error: ""
@@ -12,7 +11,9 @@ export function errorReducer(state: any = initialState, action: any) {
     }
     case `@@ERROR_SHOW`: {
        const { error } = action.payload;
-            return { ...state , error};
+            return { ...state , 
+              error
+            };
     }
     case `@@ERROR_HIDE`: {
       return {

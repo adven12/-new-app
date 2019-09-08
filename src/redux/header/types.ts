@@ -9,9 +9,6 @@ export enum HeaderActions {
     data:  any;
   }
   
-  // export interface DoHeaderProps {
-  //   isLog: boolean;
-  // }
   export interface HeaderRequest{
     isLog: boolean;
   }

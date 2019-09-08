@@ -18,7 +18,7 @@ const style = {
 class ErrorComponent extends React.Component<ErrorProps> {
   render() {
     console.log(this.props.error);
-    
+     
     return <h4 style={style}>{this.props.error.error}</h4>;
   }
 }

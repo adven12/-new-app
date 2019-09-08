@@ -7,7 +7,7 @@ export const initialState: LogoutState = {
 };
 
 export function logoutReducer(state: LogoutState = initialState, action: any) {
-    // debugger;
+
   switch (action.type) {
     case `@@logout/DO_LOGOUT`: {
       const { data } = action.payload;
