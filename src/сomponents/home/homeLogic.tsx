@@ -27,7 +27,7 @@ export interface HomeModalProps {
     state: HomeModalState = {
         email: "",
         name: "",
-        changePhoto: "",
+        changePhoto: "no_photo",
         idUser: 0,
       };
     avatarPhoto:any = {avatar}
@@ -36,21 +36,19 @@ export interface HomeModalProps {
 
     }
     edit = ():any => {
-        // const { doHomeModal } = this.props;
-        // doHomeModal({ email: this.state.email, name: this.state.name }); 
-        // console.log("8888888888888888", doHomeModal({ email: this.state.email, name: this.state.name }));
         // change inputs from homeComponent
         let editName:any = document.querySelector('#user-name');
         let editEmail:any = document.querySelector('#user-email');
         console.log("1111111 ",editName.value);
         editName.value = this.state.name;
         editEmail.value = this.state.email;
-       
+
         const newSave = {
             name: this.state.name,
             email: this.state.email,
             changePhoto: this.state.changePhoto,
         };
+  
         const local: any = localStorage.getItem('state')
         console.log(local);
         const localParce = JSON.parse(local)
@@ -87,11 +85,20 @@ export interface HomeModalProps {
           // localStorage.clear();
           // window.location.href = "/login";
           let imgMin:any = document.querySelector('#photoMin');
+          let img:any = document.querySelector('#photo');
+
+          if(this.state.changePhoto == 'no_photo'){
+            imgMin.src = this.avatarPhoto.avatar;
+            img.src = this.avatarPhoto.avatar;
+            console.log(this.avatarPhoto);
+          }else{
           imgMin.src = this.state.changePhoto;
+          img.src = this.state.changePhoto;
+          }
     };
 
     handleImage = (e: any) =>{
-            let defaultPhoto = this.avatarPhoto
+            let defaultPhoto = this.avatarPhoto.avatar;
             let img:any = document.querySelector('#photo');
             // let imgMin:any = document.querySelector('#photoMin');
 
@@ -125,6 +132,8 @@ export interface HomeModalProps {
                    }
 
     render(){
+      console.log(this.state.idUser);
+      
         return(
             <div className="homeLogic">
              <input

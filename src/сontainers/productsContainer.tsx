@@ -2,7 +2,7 @@ import { RootState } from "../redux/rootReducer";
 import  ProductsComponent  from "../сomponents/products/productsComponent";
 import { connect } from "react-redux";
 import { doProducts } from "../redux/products/actions";
-import { doProductsToBasket } from "../redux/products/actions";
+import { doProductsToBasket, doProductsUpdate } from "../redux/products/actions";
 
 
 const mapStateToProps = (state: RootState) => ({
@@ -13,5 +13,5 @@ const mapStateToProps = (state: RootState) => ({
 
 export default connect(
   mapStateToProps,
-  { doProducts, doProductsToBasket },
+  { doProducts, doProductsToBasket, doProductsUpdate },
 )(ProductsComponent);

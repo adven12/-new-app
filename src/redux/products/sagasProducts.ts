@@ -3,28 +3,22 @@ import  {callApiProducts}  from "../products/req";
 
 
 export function* doProducts(): IterableIterator<any> {
-  yield takeEvery(`@@products/DATAPRODUCTS_INIT`, function* () {
+  yield takeEvery(`GET_ALL_BOOKS`, function* () {
     try {
-    
+      
       const products = yield call(callApiProducts,'GET', 'products');
-      console.log('products ', products);
 
-      // const {
-      //   data: { addToBasket },
-      //   } = action;
-      //   console.log('addToBasket saga: ' + addToBasket);
-      //   console.log('action saga: ' + action);
+    if(products.length == 0){
+      return null;
+    }
 
-
-    if(products){
         yield put({ 
-        type: `@@products/DATAPRODUCTS_LOADED`,
+        type: `LOADED_BOOKS`,
           payload: {
           dataProducts: products,
           
           }
        });
-    }
        
 }catch (error) {
     yield put({
@@ -36,3 +30,39 @@ export function* doProducts(): IterableIterator<any> {
   }
 });
 }
+export function* doProductsUpdate(): IterableIterator<any> {
+  yield takeEvery('DELETE_BOOK', function*(action: any) {
+      
+      try {
+        console.log(action);
+        
+        let id = action.data;
+        const API_URL = 'http://localhost:3003/products/'                                            
+        const API_PATH = id
+        
+          yield call (() => {
+              return fetch(API_URL + API_PATH, {
+                method: 'DELETE'
+              })
+
+          } )
+
+          yield put ({
+            type: 'GET_ALL_BOOKS',
+            payload: {
+                            
+            }
+          })
+                    
+      } 
+      
+      catch (error) {
+        yield put({
+          type: `@@DATAPRODUCTS_ERROR`,
+          payload: {
+            error: error.message
+          }
+        });
+      }
+    })
+  }

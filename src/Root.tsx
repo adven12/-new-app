@@ -10,8 +10,12 @@ import HomeContainer from "./сontainers/homeContainer";
 import RegistrationContainer from "./сontainers/registrationContainer";
 import HeaderContainer from "./сontainers/headerContainer";
 import UsersContainer from "./сontainers/usersContainer";
+import productsDescriptionContainer from "./сontainers/productsDescriptionContainer";
 import ProductsContainer from "./сontainers/productsContainer";
+
 import "./rootStyle.css"
+import ProductsDescription from "./сomponents/products/productsDescription";
+
 
 
 
@@ -22,7 +26,8 @@ export const Path = {
   home: "/home",
   logout: "/logout",
   users: "/users",
-  products: "/products"
+  products: "/products",
+  description: "/description",
 };
 
 const store: Store<RootState> = configureStore();
@@ -30,7 +35,7 @@ const store: Store<RootState> = configureStore();
 export default () => (
   <Provider store={store}>
    
-    <Router>
+   <Router>
       <div className="root-class">
       <HeaderContainer />
         <Route path={Path.login} component={LoginContainer} />
@@ -38,9 +43,10 @@ export default () => (
         <Route path={Path.home} component={HomeContainer} />
         <Route path={Path.users} component={UsersContainer} />
         <Route path={Path.products} component={ProductsContainer} />
+        <Route path={Path.description} component={ProductsDescription} />
      </div>
 
-        </Router>
+  </Router>
         
   </Provider>
 );

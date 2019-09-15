@@ -5,17 +5,21 @@ import { doLogin } from "../../redux/login/sagasLogin";
 import avatar from "../../img/avatar.png"; 
 import basket from "../../img/basket.png";
 import BasketContainer from "../../сontainers/basketContainer"
-
+import { BasketState, BasketRequest } from "../../redux/basket/types";
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import basketContainer from "../../сontainers/basketContainer";
+import MailIcon from '@material-ui/icons/Mail';
+import Badge from '@material-ui/core/Badge';
+import IconButton from '@material-ui/core/IconButton';
 import { createStyles, makeStyles, Theme, Modal } from "@material-ui/core";
 
 export interface HeaderProps {
   doLogin: () => object;
   isLog: boolean,
   data: any,
+  basketBooks: any,
 }
 const useStyles = makeStyles((theme: Theme) => 
   createStyles({
@@ -32,28 +36,49 @@ const useStyles = makeStyles((theme: Theme) =>
       boxShadow: theme.shadows[5],
       padding: theme.spacing(0, 4, 1),
     },
+    margin: {
+      margin: theme.spacing(2),
+    },
+    padding: {
+      padding: theme.spacing(0, 2),
+    },
+    badge: {
+      right: -3,
+      border: `2px solid ${theme.palette.background.paper}`,
+      padding: '0 4px',
+    },
+    primary: {
+      // light: '#757ce8',
+      // main: '#3f50b5',
+      color: '#000',
+      // contrastText: '#fff',
+    },
   }),
 );
 
 const  HeaderComponent: React.FC = (props:any) => {
-  // const state: LogoutState = {
-  //   isLog: false,
-  //   data: {
-  //     role: "",
-  //   },
-  // };
+  
   const classes = useStyles();
   let defoltPhoto = props.data.avatar;
+  let sum = 0;
+  
   if(defoltPhoto === '' || defoltPhoto === undefined){
     defoltPhoto = avatar
   }
+
+  function sumQuantity(){
+  props.basketBooks.map((book:any) => {
+  sum = sum + book.quantity;})
+  return sum;
+  }
+  
    function logout()  {
     // const { doLogin } = props;
     localStorage.clear();
-    window.location.href = "/";
+    window.location.href = "/login";
       //  doLogout({isLog: false});  
     }
-    console.log(props.isLog );
+    console.log(props.data);
     
   if(props.isLog  && props.data.role === undefined){
     doLogin();
@@ -79,7 +104,7 @@ const  HeaderComponent: React.FC = (props:any) => {
                  <header className="headerComponent-header">
                    <Link className="headerComponent-link" to="/users">Users</Link>
                    <Link className="headerComponent-link" to="/products">Products</Link>
-                   <Link onClick={() => logout()} className="headerComponent-link headerComponent-a" to="/">Logout</Link>
+                   <Link onClick={() => logout()} className="headerComponent-link headerComponent-a" to="/login">Logout</Link>
                  </header>
           ) : console.log("dffdg") 
         }
@@ -87,7 +112,11 @@ const  HeaderComponent: React.FC = (props:any) => {
           (
               <header className="headerComponent-header">
                 <img src={defoltPhoto} alt="avatar" id="photoMin" className="headerComponent-img"/>
+                {/* <IconButton aria-label="cart"> */}
+                <Badge badgeContent={sumQuantity()}>
                 <img src={basket} alt="basket" id="basket" className="headerComponent-img" aria-controls="simple-menu" aria-haspopup="true" onClick={(e: any) => handleOpen(e)}/>
+                </Badge>
+                {/* </IconButton> */}
                 <Modal className={classes.location}
                     aria-labelledby="simple-modal-title"
                     aria-describedby="simple-modal-description"

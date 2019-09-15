@@ -3,11 +3,16 @@ import { ProductsActions, ProductsRequest } from "./types";
 const prefix = "@@products";
 
 export function doProducts() {
-  return { type: `${prefix}/${ProductsActions.DATAPRODUCTS_INIT}`,
+  return { type: `GET_ALL_BOOKS`,
   };
 }
-  export function doProductsToBasket(data:ProductsRequest) {
+  export function doProductsToBasket(book:ProductsRequest) {
     return { type: `${prefix}/${ProductsActions.DO_PRODUCTS_TO_BASKET}`,
-    data
+    book
     };
+}
+export function doProductsUpdate(data:ProductsRequest, allBooks:any) {
+  return { type: 'DELETE_BOOK',
+  data, allBooks
+  };
 }
